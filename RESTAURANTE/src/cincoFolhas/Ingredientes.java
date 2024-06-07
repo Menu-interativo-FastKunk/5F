@@ -6,7 +6,8 @@ public class Ingredientes {
     ArrayList<Ingredientes> ingredientes = new ArrayList<Ingredientes>();
     String nome;
     double quantidade;
-    public Ingredientes(String nome, double quantidade){
+
+    Ingredientes(String nome, double quantidade){
         this.nome = nome;
         this.quantidade = quantidade;
     }

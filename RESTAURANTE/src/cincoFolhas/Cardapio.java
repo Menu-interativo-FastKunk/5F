@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Cardapio extends Produto {
     private static Scanner input = new Scanner(System.in);
-    private static ArrayList<Produto> cardapio = new ArrayList<Produto>();
+    protected static ArrayList<Produto> cardapio = new ArrayList<Produto>();
 
     public static void exibirCardapio(){
         System.out.println("------ Cardápio ------");
@@ -15,8 +15,9 @@ public class Cardapio extends Produto {
         System.out.println("----------------------");
     }
 
-    public static void adicionarProduto(Produto item){
-        cardapio.add(item);
+    public void adicionarProduto(){
+        Produto produto = novoProduto();
+        cardapio.add(produto);
     }
     
     public void removerProduto(){
@@ -43,11 +44,4 @@ public class Cardapio extends Produto {
             System.out.println("Opção inválida");
         }
     }
-
-    public void criarNovoProduto(){
-        Produto produto = novoProduto();
-        adicionarProduto(produto);
-    }
-    
-    
 }

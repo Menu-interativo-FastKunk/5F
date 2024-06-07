@@ -47,7 +47,7 @@ public class Produto extends Ingredientes {
         String complemento = input.nextLine();
         System.out.println("Informe o preço");
         double preco = input.nextDouble();
-        input.nextLine(); // Consumir o newline deixado pelo nextDouble
+        input.nextLine();
         ArrayList<Ingredientes> ingredientesSelecionados = selecionarIngredientes();
         return new Produto(nome, complemento, preco, ingredientesSelecionados);
     }
@@ -76,6 +76,6 @@ public class Produto extends Ingredientes {
     @Override
     public String toString() {
         return nome + '-' + complemento + '-'+ preco + "\n" +
-               ingredientesProduto.toString();
+        ingredientesProduto.toString();
     }
 }

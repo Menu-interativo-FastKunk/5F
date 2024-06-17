@@ -1,10 +1,8 @@
 package cincoFolhas;
 
-import java.util.Scanner;
-
+import java.util.*;
 public class Produto {
-    
-    static Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
     private String nome, complemento;
     private double preco;
     Produto(){

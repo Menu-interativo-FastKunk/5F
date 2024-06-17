@@ -4,14 +4,9 @@ public class Main {
     public static void main(String[] args) {
         Funcionario funcionario = new Funcionario();
         Cardapio cardapio = new Cardapio();
-        Ingredientes ingredientes = new Ingredientes();
-        ingredientes.listaPadraoIngredientes();
         cardapio.adicionarProduto();
         cardapio.adicionarProduto();
         funcionario.pedidoCliente();
-        funcionario.visualizarPedidos();
         funcionario.pedidoFinalizado();
-
-
     }
 }

@@ -2,8 +2,8 @@ package cincoFolhas;
 
 import java.util.*;
 
-public class Cliente extends Cardapio {
-    private Scanner input = new Scanner(System.in);
+public class Cliente {
+    private static Scanner input = new Scanner(System.in);
     private String nome, pagamento;
     private int mesa;
     private ArrayList<Produto> pedidosCliente = new ArrayList<Produto>();
@@ -44,7 +44,7 @@ public class Cliente extends Cardapio {
         this.pedidosCliente = pedidosCliente;
     }
 
-    public Cliente novoCliente(){
+    public static Cliente novoCliente(){
         System.out.println("Informe o nome do cliente!");
         String nome = input.nextLine();
         System.out.println("Informe a mesa do cliente");
@@ -75,7 +75,7 @@ public class Cliente extends Cardapio {
         return new Cliente(nome, formaPagamento, mesa, pedidosSelecionados);
         
     }
-    public ArrayList<Produto> fazerPedido(){
+    public static ArrayList<Produto> fazerPedido(){
         ArrayList<Produto> pedidosFeitos = new ArrayList<Produto>();
         boolean continuarCompra = true;
         do {
@@ -93,7 +93,6 @@ public class Cliente extends Cardapio {
         } while (continuarCompra);
 
         return pedidosFeitos;
-        
     }
     
     @Override

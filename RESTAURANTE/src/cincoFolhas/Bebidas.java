@@ -3,32 +3,10 @@ package cincoFolhas;
 import java.util.*;
 
 public class Bebidas extends Produto {
-    private String bebida, tipo;
-    private double preco;
+    private static Scanner input = new Scanner(System.in);
     ArrayList<Bebidas> bebidas = new ArrayList<Bebidas>();
     Bebidas(String nome, String tipo, double preco) {
         super(nome, tipo, preco);
-    }
-
-    public String getBebida() {
-        return bebida;
-    }
-    public void setBebida(String bebida) {
-        this.bebida = bebida;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-    public void setPreco(double preco) {
-        this.preco = preco;
     }
 
     public ArrayList<Bebidas> getBebidas() {
@@ -45,6 +23,7 @@ public class Bebidas extends Produto {
         String tipo = input.nextLine();
         System.out.println("Informe o preço");
         double preco = input.nextDouble();
+        input.nextLine();
         return new Bebidas(bebida, tipo, preco);
     }
 

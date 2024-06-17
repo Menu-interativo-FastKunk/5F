@@ -2,11 +2,11 @@ package cincoFolhas;
 
 import java.util.*;
 
-public class Funcionario extends Cliente {
+public class Funcionario {
     private static Scanner input = new Scanner(System.in);
     private static List<Cliente> clientes = new ArrayList<>();
     public void pedidoCliente() {
-        Cliente cliente = novoCliente();
+        Cliente cliente = Cliente.novoCliente();
         clientes.add(cliente);
         System.out.println("Cliente adicionado com sucesso");
     }
@@ -16,34 +16,31 @@ public class Funcionario extends Cliente {
             System.out.println("Pedidos do cliente da mesa " + cliente);
         }
     }
-    public void produtoFinalizado(){
+
+    public void pedidoFinalizado() {
         visualizarPedidos();
-        System.out.println("Informe a mesa do produto finalizado");
-        int indiceMesa = input.nextInt();
-        if (indiceMesa > 0 && indiceMesa <= clientes.size()){
-            System.out.println("Informe o número do produto que deseja remover:");
-            int indiceProduto = input.nextInt();
-            if (indiceProduto > 0 && indiceProduto <= clientes.get(indiceMesa).getPedidosCliente().size()) {
-                clientes.get(indiceMesa).getPedidosCliente().remove(indiceProduto - 1);
-                System.out.println("Pedido removido com sucesso.");
-            } else {
-                System.out.println("Índice inválido.");
-            }
-        }
+        System.out.println("Selecione o pedido finalizado");
+        int entrada = input.nextInt();
+        valorAPagar((entrada-1));
+        clientes.remove((entrada-1));
     }
 
-    public void pedidoFinalizado(){
-        produtoFinalizado();
-        for(int i = 0; i < clientes.size(); i++){
-            if(clientes.get(i).getPedidosCliente().isEmpty()){
-                System.out.println("Pedido da mesa " + clientes.get(i).getMesa() + " finalizado");
-                
-            }
+    public void valorAPagar(int clienteSelecionado) {
+        Cliente cliente = clientes.get(clienteSelecionado);
+        double resultado = 0;
+        for (Produto pedido : cliente.getPedidosCliente()) {
+            resultado += (pedido.getPreco()); 
         }
+        System.out.println("Total a pagar = R$" + resultado);
+        if (cliente.getPagamento().equalsIgnoreCase("Dinheiro")) {
+            System.out.println("Qual o valor que o cliente deu?");
+            double valorCliente = input.nextDouble();
+            double troco = valorCliente - resultado;
+            System.out.println("Você deve R$" + troco + " de troco");
+        } else {
+            System.out.println("Não tem troco");
+        }
+        System.out.println("Obrigado por comprar conosco");
     }
-
-    
-    
-
     
 }

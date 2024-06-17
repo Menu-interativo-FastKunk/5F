@@ -1,17 +1,14 @@
 package cincoFolhas;
 
-import java.util.ArrayList;
+import java.util.*;
 
-public class Comida extends Ingredientes{
-    private String nome, complemento;
-    private double preco;
+public class Comida extends Produto{
+    private static Scanner input = new Scanner(System.in);
     private ArrayList<Ingredientes> ingredientesProduto = new ArrayList<Ingredientes>();
+    
     Comida(String nome, String complemento, double preco, ArrayList<Ingredientes> ingredientesProduto){
-        this.nome = nome;
-        this.complemento = complemento;
-        this.preco = preco;
+        super(nome, complemento, preco);
         this.ingredientesProduto = ingredientesProduto;
-        listaPadraoIngredientes(); 
     }
 
     public static Produto novaComida(){
@@ -27,15 +24,16 @@ public class Comida extends Ingredientes{
     }
 
     public static ArrayList<Ingredientes> selecionarIngredientes(){
+        Ingredientes listaIngredientes = new Ingredientes();
         ArrayList<Ingredientes> ingredientesSelecionados = new ArrayList<>();
         boolean continuarIngredientes = true;
         do {
             System.out.println("Selecione os ingredientes que compõem o seu produto");
-            exibirIngredientes();
+            listaIngredientes.exibirIngredientes();
             int indice = input.nextInt();
             input.nextLine();
-            if(indice > 0 && indice <= ingredientes.size()){
-                ingredientesSelecionados.add(ingredientes.get(indice - 1));
+            if(indice > 0 && indice <= listaIngredientes.ingredientes.size()){
+                ingredientesSelecionados.add(listaIngredientes.ingredientes.get(indice - 1));
                 System.out.println("Ingrediente escolhido com sucesso");
             } else{
                 System.out.println("Opção inválida");
@@ -46,9 +44,10 @@ public class Comida extends Ingredientes{
         } while (continuarIngredientes);
         return ingredientesSelecionados;
     }
+    
     @Override
     public String toString() {
-        return nome + '-' + complemento + '-' + "R$" + preco + "\n" +
+        return getNome() + '-' + getComplemento() + '-' + "R$" + getPreco() + "\n" +
         ingredientesProduto.toString();
     }
 }
